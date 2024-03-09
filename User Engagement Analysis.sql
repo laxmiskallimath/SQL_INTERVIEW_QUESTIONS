@@ -168,7 +168,7 @@ LIMIT 3; -- Retrieve the top 3 most engaging posts
 # post_id	  post_content	                   Total_reactions
      1	    Lorem ipsum dolor sit amet...	         3
      2	    Exploring the beauty of nature...	     3
-     3	    Unveiling the latest tech trends...	   2
+     3	    Unveiling the latest tech trends...	     2
 */
 
 -- IN SNOWFLAKE
