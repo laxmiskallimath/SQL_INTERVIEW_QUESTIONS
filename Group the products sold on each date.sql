@@ -62,29 +62,6 @@ ORDER BY
 
 -- In Snowflake, the LISTAGG() function is commonly used to concatenate values from multiple rows into a single string within a group. Here's an example --- of how you can use LISTAGG() to achieve similar functionality to GROUP_CONCAT() in other database systems:
 
--- Sample table and data
-CREATE TABLE sample_data (
-    group_id INT,
-    value VARCHAR(50)
-);
-
-INSERT INTO sample_data (group_id, value)
-VALUES
-    (1, 'A'),
-    (1, 'B'),
-    (1, 'C'),
-    (2, 'X'),
-    (2, 'Y'),
-    (2, 'Z');
-
--- Query using LISTAGG for concatenation
-SELECT
-    group_id,
-    LISTAGG(value, ', ') WITHIN GROUP (ORDER BY value) AS concatenated_values
-FROM
-    sample_data
-GROUP BY
-    group_id;
 CREATE TABLE Activities (
     sell_date DATE,
     product VARCHAR(50)
@@ -118,8 +95,38 @@ SELL_DATE	NUM_SOLD	PRODUCTS
 2020-06-02	2	        Bread, Bread
 */
      
+-- Another Example
 
+-- Sample table and data
+CREATE TABLE sample_data (
+    group_id INT,
+    value VARCHAR(50)
+);
 
+INSERT INTO sample_data (group_id, value)
+VALUES
+    (1, 'A'),
+    (1, 'B'),
+    (1, 'C'),
+    (2, 'X'),
+    (2, 'Y'),
+    (2, 'Z');
+
+-- Query using LISTAGG for concatenation
+SELECT
+    group_id,
+    LISTAGG(value, ', ') WITHIN GROUP (ORDER BY value) AS concatenated_values
+FROM
+    sample_data
+GROUP BY
+    group_id;
+
+--Results
+/*
+GROUP_ID	CONCATENATED_VALUES
+1	         A, B, C
+2	         X, Y, Z
+*/
 
 
 
